@@ -53,17 +53,14 @@ def largest_product
   value2 = []
   count = 0
   max = 12
-while count < 999
-  for num in (count..max)
+ 
+for num in (0..12) 
   value << thousand_array[num].split('').join.to_i
   value2 << thousand_array[num+1].split('').join.to_i
-  count =+ 1
-  max =+ 1
-  end
-  #print value.inject(1) { |r, e| r * e }
-  count =+ 1
-  max =+ 1
-end
+end 
+  print value.inject(1) { |r, e| r * e }
+  print value2.inject(1) { |r, e| r * e }
+
 end
 
 largest_product()
