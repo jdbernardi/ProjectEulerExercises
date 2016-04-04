@@ -51,16 +51,38 @@ def largest_product
   thousand_array = thousand_digit_number.split('')
   value = []
   value2 = []
+  largest_value_array = []
   count = 0
   max = 12
  
-for num in (0..12) 
-  value << thousand_array[num].split('').join.to_i
-  value2 << thousand_array[num+1].split('').join.to_i
-end 
-  print value.inject(1) { |r, e| r * e }
-  print value2.inject(1) { |r, e| r * e }
+while max <= 13
 
+    for num in (count..max) 
+      value << thousand_array[num].split('').join.to_i
+      value2 << thousand_array[num+1].split('').join.to_i
+    end 
+
+      product1 = value.inject(1) { |r, e| r * e }
+      product2 = value2.inject(1) { |r, e| r * e }
+
+      if product1 > product2 
+        value.map { |x| largest_value_array << x }
+      else
+        value2.map { |x| largest_value_array << x}
+      end
+
+      #print value
+      #print value2
+
+      #print largest_value_array
+
+  print "count: #{max}"
+
+  max += 1
+  count += 1
+
+end
+  print largest_value_array
 end
 
 largest_product()
