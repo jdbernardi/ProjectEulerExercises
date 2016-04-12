@@ -7,10 +7,15 @@ Given a list of integers and a single sum value, return the first two values (pa
 
 def sum_pairs(ints, s)
     # the list of integers starting from the left will be checked against the sum
+ 
 
-     result = Array(ints).combination(2).find_all { |x, y| x + y == s } || []
+     result = Array(ints).combination(2).find_all { |x, y| x + y == s } || [] 
 
-     print result
+     
+
+
+
+ 
 
 =begin
 
