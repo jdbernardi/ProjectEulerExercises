@@ -7,43 +7,30 @@ Given a list of integers and a single sum value, return the first two values (pa
 
 def sum_pairs(ints, s)
     # the list of integers starting from the left will be checked against the sum
-    compare_array = ints
-    array_sums = []
-    
-    i = 0
-    j = 1
+
+     result = Array(ints).combination(2).find_all { |x, y| x + y == s } || []
+
+     print result
+
+=begin
+
+    if array_sums == []
+      return nil
+    end
 
     while i < compare_array.count
       for j in (1...ints.size)
         if compare_array[i] + ints[j] == s
           #puts "#{compare_array[i]} and #{ints[j]}"
           array_sums << [compare_array[i], compare_array.index(i)]
-          array_sums << [ints[j], ints.index(j)]
         end
       end
       i += 1
       j = i
     end
 
-    if array_sums == []
-      return nil
-    end
+=end
 
-    print array_sums
-
-=begin
-    for i in (0..compare_array.length)
-      for j in (1..ints.length)
-        if compare_array(i) + ints(j) == s
-          print "yes"
-        end
-      end
-    end
-=end     
-
-    # each pair will be stored in an array with the indices they are at
-    # if the indices of the pair is before another paired sum
-    # then that pair is the correct answer
 end
 
 
