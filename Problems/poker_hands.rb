@@ -31,6 +31,9 @@ def poker_hands(player_1_hand, player_2_hand)
 player_1 = player_1_hand.split(" ")
 player_2 = player_2_hand.split(" ")
 
+player_1_top_hand = 1
+player_2_top_hand = 1
+
 print player_1
 puts ""
 puts ""
@@ -117,27 +120,61 @@ player2_rank = []
     end
   }  
   # Two pairs
-  # Three of a kind
-  three_1 = player1_rank.inject(Hash.new(0)) { |total, e| total[e] += 1; total}
-  three_2 = player2_rank.inject(Hash.new(0)) { |total, e| total[e] += 1; total}
 
-  three_1.each { |k, v| 
-    if v == 2
+  if pair_1.has_value?(2) && pair_1.has_value?(2)
+    puts "Player one has two pair"
+  end
+
+  if pair_2.has_value?(2) && pair_2.has_value?(2)
+    puts "Player two has two pair"
+  end
+
+  # Three of a kind
+  pair_1.each { |k, v| 
+    if v == 3
       print "player one has three #{k}'s"
     else
     end
   }
 
-  three_2.each { |k, v| 
-    if v == 2
+  pair_2.each { |k, v| 
+    if v == 3
       print "player two has three #{k}'s"
     else
     end
   }
+
+
   # Straight
+
+  
+
+
+
   # Flush
+
   # Full House
+  if pair_1.has_value?(3) && pair_1.has_value?(2)
+    puts "Player one has a Full House"
+  end
+
+  if pair_2.has_value?(3) && pair_2.has_value?(2)
+    puts "Player two has a Full House"
+  end
   # Four of a Kind
+  pair_1.each { |k, v| 
+    if v == 4
+      print "player one has four #{k}'s"
+    else
+    end
+  }
+
+  pair_2.each { |k, v| 
+    if v == 4
+      print "player two has four #{k}'s"
+    else
+    end
+  }
   # Straight Flush
   # Royal Flush
 # Once both hands are evaluated the top evaulations are compared
@@ -146,4 +183,4 @@ player2_rank = []
 
 end
 
-poker_hands("8C TS 8S 9H 8D", "7D 2S 5D 2D AC")
+poker_hands("8C 9D 8S 9H 8D", "7D 8D TH TS JC")
