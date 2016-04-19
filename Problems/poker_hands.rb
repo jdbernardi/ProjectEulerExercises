@@ -145,11 +145,26 @@ player2_rank = []
   }
 
 
-  # Straight
+  ##### Straight #####
+  # for the straight to be there the rank of the cards must be in order
+  # starting with the rank, it must be sorted
 
-  
+  if straight?(player2_rank) == true
+    puts "Straight!"
+  else 
+    puts "Nada Straight"
+  end
 
 
+
+
+
+  # if the second element is one more than the first
+  # then increment to the next element
+  # otherwise function and straight is false
+
+
+  # Straight Flush
 
   # Flush
 
@@ -161,21 +176,14 @@ player2_rank = []
   if pair_2.has_value?(3) && pair_2.has_value?(2)
     puts "Player two has a Full House"
   end
-  # Four of a Kind
-  pair_1.each { |k, v| 
-    if v == 4
-      print "player one has four #{k}'s"
-    else
-    end
-  }
 
-  pair_2.each { |k, v| 
-    if v == 4
-      print "player two has four #{k}'s"
-    else
-    end
-  }
-  # Straight Flush
+  # Four of a Kind
+  if four_of_a_kind?(pair_1) == true
+    puts "Four of a Kind"
+  else 
+    puts "No four of a kind"
+  end
+
   # Royal Flush
 # Once both hands are evaluated the top evaulations are compared
 # consider assiging a number value to the winning hand
@@ -183,4 +191,33 @@ player2_rank = []
 
 end
 
-poker_hands("8C 9D 8S 9H 8D", "7D 8D TH TS JC")
+def four_of_a_kind?(hand)
+    hand.each { |k, v| 
+    if v == 4
+      return true
+    end
+  }
+
+end
+
+def straight?(hand)
+  #straight = player2_rank.sort
+  straight = hand.sort
+  count = 0
+  j = 1
+  # then take the first element of the array 
+  for i in (0...4) 
+    if j < 5  
+  # and compare it to the second element
+      if straight[i] == (straight[j] - 1)
+        count += 1
+      end
+    end
+    j += 1
+  end
+
+  count == 4 ? true : false 
+
+  end
+
+poker_hands("8C 8H 8S 9H 8D", "2D 5D 4H 3S 6C")
