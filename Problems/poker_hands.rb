@@ -106,59 +106,42 @@ player2_rank = []
   pair_1 = player1_rank.inject(Hash.new(0)) { |total, e| total[e] += 1; total}
   pair_2 = player2_rank.inject(Hash.new(0)) { |total, e| total[e] += 1; total}
 
-  pair_1.each { |k, v| 
-    if v == 2
-      print "player one has a pair of #{k}'s"
-    else
-    end
-  }
+  print pair_1
 
-  pair_2.each { |k, v| 
-    if v == 2
-      print "player two has a pair of #{k}'s"
-    else
-    end
-  }  
-  # Two pairs
-
-  if pair_1.has_value?(2) && pair_1.has_value?(2)
-    puts "Player one has two pair"
+  if pair?(pair_1) == true
+    puts "pair for P1"
   end
 
-  if pair_2.has_value?(2) && pair_2.has_value?(2)
-    puts "Player two has two pair"
+  if pair?(pair_2) == true
+    puts "pair for P2"
+  end
+
+  # Two pairs
+
+  if two_pair?(pair_1) == true
+    print "Two pair for P1"
+  end
+
+  if two_pair?(pair_2) == true
+    print "Two pair for P2"
   end
 
   # Three of a kind
-  pair_1.each { |k, v| 
-    if v == 3
-      print "player one has three #{k}'s"
-    else
-    end
-  }
+  if three_of_a_kind?(pair_1) == true
+    print "3 of a kind for player 1"
+  end
 
-  pair_2.each { |k, v| 
-    if v == 3
-      print "player two has three #{k}'s"
-    else
-    end
-  }
-
-
+  if three_of_a_kind?(pair_2) == true
+    print "3 of a kind for player 2"
+  end
   ##### Straight #####
   # for the straight to be there the rank of the cards must be in order
   # starting with the rank, it must be sorted
-
   if straight?(player2_rank) == true
     puts "Straight!"
   else 
     puts "Nada Straight"
   end
-
-
-
-
-
   # if the second element is one more than the first
   # then increment to the next element
   # otherwise function and straight is false
@@ -191,6 +174,32 @@ player2_rank = []
 
 end
 
+##### PAIR #####
+def pair?(hand)
+    hand.each { |k, v| 
+    if v == 2
+      return true
+    end
+  }
+end
+
+##### TWO PAIR #####
+def two_pair?(hand) 
+  if hand.has_value?(2) && hand.has_value?(2)
+    return true
+  end
+end
+
+##### 3 OF A KIND #####
+def three_of_a_kind?(hand)
+  hand.each { |k, v| 
+    if v == 3
+      return true
+    end
+  }
+end
+
+##### FOUR OF A KIND #####
 def four_of_a_kind?(hand)
     hand.each { |k, v| 
     if v == 4
@@ -200,6 +209,7 @@ def four_of_a_kind?(hand)
 
 end
 
+##### STRAIGHT #####
 def straight?(hand)
   #straight = player2_rank.sort
   straight = hand.sort
@@ -218,6 +228,6 @@ def straight?(hand)
 
   count == 4 ? true : false 
 
-  end
+end
 
-poker_hands("8C 8H 8S 9H 8D", "2D 5D 4H 3S 6C")
+poker_hands("8C 7H 7S 7H TD", "2D 5D 4H 3S 6C")
