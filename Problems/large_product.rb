@@ -27,7 +27,7 @@ Find the thirteen adjacent digits in the 1000-digit number that have the greates
 
 def largest_product
 
-  thousand_digit_number = "73167176531330624919225119674426574742355349194934
+  number = "73167176531330624919225119674426574742355349194934
 96983520312774506326239578318016984801869478851843
 85861560789112949495459501737958331952853208805511
 12540698747158523863050715693290963295227443043557
@@ -48,43 +48,41 @@ def largest_product
 05886116467109405077541002256983155200055935729725
 71636269561882670428252483600823257530420752963450"
 
-  thousand_array = thousand_digit_number.split('')
-  value = []
-  value2 = []
-  largest_value_array = []
-  count = 0
-  max = 12
- 
-while max <= 13
 
-    for num in (count..max) 
-      value << thousand_array[num].split('').join.to_i
-      value2 << thousand_array[num+1].split('').join.to_i
-    end 
+# take the 1000 digit number and split into an array and convert to integers and store into a var array
 
-      product1 = value.inject(1) { |r, e| r * e }
-      product2 = value2.inject(1) { |r, e| r * e }
+digit_array = number.split('').map! { |x| x.to_i}
 
-      if product1 > product2 
-        value.map { |x| largest_value_array << x }
-      else
-        value2.map { |x| largest_value_array << x}
-      end
+array_of_products = []
 
-      #print value
-      #print value2
+count = 0
 
-      #print largest_value_array
+for num in (0..1006)
 
-  print "count: #{max}"
+  product_to_inject = []
 
-  max += 1
+  for y in (num..(num+12))
+
+  product_to_inject << digit_array[y]
+
+  end
+
   count += 1
 
-end
-  print largest_value_array
+  array_of_products << product_to_inject.inject(1) { |r, e| r * e } unless product_to_inject.inject(1) { |r, e| r * e } == 0 
+
+
+
 end
 
-largest_product()
+# this is the largest product 
+puts array_of_products.min
+puts array_of_products.max
+
+
+
+end
+
+largest_product
 
 
