@@ -102,7 +102,7 @@ player2_rank = []
     puts "Player two has the high card of #{player2_rank.max}"
   end
 
-  # One pair
+##### One pair
   pair_1 = player1_rank.inject(Hash.new(0)) { |total, e| total[e] += 1; total}
   pair_2 = player2_rank.inject(Hash.new(0)) { |total, e| total[e] += 1; total}
 
@@ -116,7 +116,7 @@ player2_rank = []
     puts "pair for P2"
   end
 
-  # Two pairs
+##### Two pairs
 
   if two_pair?(pair_1) == true
     print "Two pair for P1"
@@ -126,7 +126,7 @@ player2_rank = []
     print "Two pair for P2"
   end
 
-  # Three of a kind
+##### Three of a kind
   if three_of_a_kind?(pair_1) == true
     print "3 of a kind for player 1"
   end
@@ -134,7 +134,7 @@ player2_rank = []
   if three_of_a_kind?(pair_2) == true
     print "3 of a kind for player 2"
   end
-  ##### Straight #####
+##### Straight 
   # for the straight to be there the rank of the cards must be in order
   # starting with the rank, it must be sorted
   if straight?(player2_rank) == true
@@ -147,7 +147,7 @@ player2_rank = []
   # otherwise function and straight is false
 
 
-  # Straight Flush
+###### Straight Flush
     # each card needs to have a suit and number associated with it
     # the first check is if its a straight calling the function
     # if the function is true
@@ -155,14 +155,22 @@ player2_rank = []
     # the player's hand needs to be evaluated to see if each card has the same SUIT
     # call the flush method to see if there are 5 of any suit
     if flush?(player_2) == true
-      print "Straigh Flush!"
+      print "Player 2 has a Straigh Flush!"
     end
     # looking at the player's hand there needs to be five of the H S D or C
     # count the number of each letter
   end
-  # Flush
+###### Flush
 
-  # Full House
+  if flush?(player_2) == true
+    print "Player 2 has a Flush"
+  end
+
+    if flush?(player_1) == true
+    print "Player 1 has a Flush"
+  end
+
+###### Full House
   if pair_1.has_value?(3) && pair_1.has_value?(2)
     puts "Player one has a Full House"
   end
@@ -171,14 +179,20 @@ player2_rank = []
     puts "Player two has a Full House"
   end
 
-  # Four of a Kind
+###### Four of a Kind
   if four_of_a_kind?(pair_1) == true
     puts "Four of a Kind"
   else 
     puts "No four of a kind"
   end
 
-  # Royal Flush
+##### Royal Flush
+  if flush?(player_2) == true
+    if straight?(player_2) == true
+      if royal?(player_2) == true
+      end
+    end
+  end
 # Once both hands are evaluated the top evaulations are compared
 # consider assiging a number value to the winning hand
 # then compare that for the winner
@@ -250,9 +264,13 @@ def flush?(hand)
 
 end
 
+def royal?(hand)
+  # find if the first card is 10 and last card is A assuming it's sorted
+  print hand
+
+end
 
 
 
 
-
-poker_hands("8C 7H 7S 7H TD", "2D 5D 4D 3D 6D")
+poker_hands("8C 7H 7S 7H TD", "TD JD QD KD AD")
