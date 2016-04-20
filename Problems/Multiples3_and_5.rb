@@ -9,7 +9,7 @@ Find the sum of all the multiples of 3 or 5 below 1000.
 def multiples
 #starting at 1 and stopping at 1000
 result = 0
-for x in (1...10) 
+for x in (1...1000) 
   if x % 3 == 0 || x % 5 == 0
     result = result + x
   end
