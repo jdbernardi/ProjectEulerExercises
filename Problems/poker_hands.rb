@@ -148,7 +148,18 @@ player2_rank = []
 
 
   # Straight Flush
-
+    # each card needs to have a suit and number associated with it
+    # the first check is if its a straight calling the function
+    # if the function is true
+  if straight?(player2_rank) == true
+    # the player's hand needs to be evaluated to see if each card has the same SUIT
+    # call the flush method to see if there are 5 of any suit
+    if flush?(player_2) == true
+      print "Straigh Flush!"
+    end
+    # looking at the player's hand there needs to be five of the H S D or C
+    # count the number of each letter
+  end
   # Flush
 
   # Full House
@@ -225,9 +236,23 @@ def straight?(hand)
     end
     j += 1
   end
-
   count == 4 ? true : false 
+end
+
+##### FLUSH #####
+def flush?(hand)
+  counts = Hash.new 0
+  check_flush = hand.join(' ').split('').each { |suit|  counts[suit] += 1 }
+  counts.each { |k, v| 
+    if v == 5
+      return true
+    end }
 
 end
 
-poker_hands("8C 7H 7S 7H TD", "2D 5D 4H 3S 6C")
+
+
+
+
+
+poker_hands("8C 7H 7S 7H TD", "2D 5D 4D 3D 6D")
