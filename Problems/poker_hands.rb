@@ -27,18 +27,23 @@ def poker_hands(player_1_hand, player_2_hand)
 # each suit and number is ranked
 # 2HCDS - A HCDS
 
-# the hand of each player needs to be placed into an array
+# the hand of each player needs to be placed into an arraY
+
 player_1 = player_1_hand.split(" ")
 player_2 = player_2_hand.split(" ")
+
+
+print "PLAYER 1: #{player_1}"
+puts ""
+print "PLAYER 2: #{player_2}"
+puts ""
+
+
 
 player_1_top_hand = 1
 player_2_top_hand = 1
 
-print player_1
-puts ""
-puts ""
-print player_2
-puts ""
+
 
 cards_suits = [
   "2H", "2D", "2C", "2S",
@@ -57,19 +62,19 @@ cards_suits = [
 ]
 
 cards_rank = {
-  "2H" => 2, "2D" => 2, "2C" => 2, "2S" => 2,
-  "3H" => 3, "3D" => 3, "3C" => 3, "3S" => 3,
-  "4H" => 4, "4D" => 4, "4C" => 4, "4S" => 4,
-  "5H" => 5, "5D" => 5, "5C" => 5, "5S" => 5,
-  "6H" => 6, "6D" => 6, "6C" => 6, "6S" => 6,
-  "7H" => 7, "7D" => 7, "7C" => 7, "7S" => 7,
-  "8H" => 8, "8D" => 8, "8C" => 8, "8S" => 8,
-  "9H" => 9, "9D" => 9, "9C" => 9, "9S" => 9,
-  "TH" => 10,"TD" => 10,"TC" => 10,"TS" => 10,
-  "JH" => 11,"JD" => 11,"JC" => 11,"JS" => 11,
-  "QH" => 12,"QD" => 12,"QC" => 12,"QS" => 12,
-  "KH" => 13,"KD" => 13,"KC" => 13,"KS" => 13,
-  "AH" => 14,"AD" => 14,"AC" => 14,"AS" => 14
+   "2H" => 2,  "2D" => 2,  "2C" => 2,  "2S" => 2,
+   "3H" => 3,  "3D" => 3,  "3C" => 3,  "3S" => 3,
+   "4H" => 4,  "4D" => 4,  "4C" => 4,  "4S" => 4,
+   "5H" => 5,  "5D" => 5,  "5C" => 5,  "5S" => 5,
+   "6H" => 6,  "6D" => 6,  "6C" => 6,  "6S" => 6,
+   "7H" => 7,  "7D" => 7,  "7C" => 7,  "7S" => 7,
+   "8H" => 8,  "8D" => 8,  "8C" => 8,  "8S" => 8,
+   "9H" => 9,  "9D" => 9,  "9C" => 9,  "9S" => 9,
+  "10H" => 10,"10D" => 10,"10C" => 10,"10S" => 10,
+  "11H" => 11,"11D" => 11,"11C" => 11,"11S" => 11,
+  "12H" => 12,"12D" => 12,"12C" => 12,"12S" => 12,
+  "13H" => 13,"13D" => 13,"13C" => 13,"13S" => 13,
+  "14H" => 14,"14D" => 14,"14C" => 14,"14S" => 14
 }
 
 player1_rank = []
@@ -87,6 +92,11 @@ player2_rank = []
     end
     }
   }
+
+  print "PLAYER 1 RANK: #{player1_rank}"
+  puts ""
+  print "PLAYER 2 RANK: #{player2_rank}"
+
 
   player_2.each { |x|
   cards_rank.each { |k, v|
@@ -106,7 +116,6 @@ player2_rank = []
   pair_1 = player1_rank.inject(Hash.new(0)) { |total, e| total[e] += 1; total}
   pair_2 = player2_rank.inject(Hash.new(0)) { |total, e| total[e] += 1; total}
 
-  print pair_1
 
   if pair?(pair_1) == true
     puts "pair for P1"
@@ -134,9 +143,17 @@ player2_rank = []
   if three_of_a_kind?(pair_2) == true
     print "3 of a kind for player 2"
   end
+
+
 ##### Straight 
   # for the straight to be there the rank of the cards must be in order
   # starting with the rank, it must be sorted
+  if straight?(player1_rank) == true
+    puts "Straight!"
+  else 
+    puts "Nada Straight"
+  end
+
   if straight?(player2_rank) == true
     puts "Straight!"
   else 
@@ -145,7 +162,6 @@ player2_rank = []
   # if the second element is one more than the first
   # then increment to the next element
   # otherwise function and straight is false
-
 
 ###### Straight Flush
     # each card needs to have a suit and number associated with it
@@ -160,6 +176,7 @@ player2_rank = []
     # looking at the player's hand there needs to be five of the H S D or C
     # count the number of each letter
   end
+
 ###### Flush
 
   if flush?(player_2) == true
@@ -169,6 +186,8 @@ player2_rank = []
     if flush?(player_1) == true
     print "Player 1 has a Flush"
   end
+
+
 
 ###### Full House
   if pair_1.has_value?(3) && pair_1.has_value?(2)
@@ -197,7 +216,8 @@ player2_rank = []
 # consider assiging a number value to the winning hand
 # then compare that for the winner
 
-end
+end #end of poker_hands method
+
 
 ##### PAIR #####
 def pair?(hand)
@@ -261,13 +281,11 @@ def flush?(hand)
     if v == 5
       return true
     end }
-
 end
 
 def royal?(hand)
   # find if the first card is 10 and last card is A assuming it's sorted
   print hand
-
 end
 
 
