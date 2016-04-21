@@ -6,11 +6,14 @@ Find the sum of all the primes below two million.
 
 require 'Prime'
 
-def sum_of_primes
+def sum_of_primes(number)
 
- print  Prime.each(2000000).inject(0) { |r, e| r + e }
+ print %Q(The sum of all primes in #{number} is: #{Prime.each(number).inject(0) { |r, e| r + e }})
 
 
 end
 
-sum_of_primes
+
+print %Q(Please enter a number: )
+number = gets.chomp
+sum_of_primes(number.to_i)
