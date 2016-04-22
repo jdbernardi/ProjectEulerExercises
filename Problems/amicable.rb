@@ -17,7 +17,6 @@ while number < 10000
   arr1 = []
   arr2 = []
 
-
   arr1 = even_array(number)
 
     sum_of_arr1 = arr1.inject(0) { |r, e| r + e }
@@ -28,7 +27,6 @@ while number < 10000
 
   if number == sum_of_arr2 && number != sum_of_arr1
     arr3 << sum_of_arr1 
-    arr3 << sum_of_arr2 
   end 
 
   number += 1
@@ -37,7 +35,7 @@ end
 
 print arr3
 
-print arr3.uniq.inject(0) { |r, e| r + e }
+print arr3.inject(0) { |r, e| r + e }
 
 
 
