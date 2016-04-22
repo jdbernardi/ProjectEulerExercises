@@ -37,9 +37,6 @@ print arr3
 
 print arr3.inject(0) { |r, e| r + e }
 
-
-
-
 end
 
 def even_array(number)
