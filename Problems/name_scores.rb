@@ -38,7 +38,7 @@ def name_scores(array)
 
   }
 
-  array.sort!
+array.sort!
  
 split = []
 values = []
@@ -46,27 +46,27 @@ sum_of_name = []
 total = []
 
 
-for num in (0...5163)
-  new_array = array[num].split('')
+  for num in (0...5163)
+    new_array = array[num].split('')
+    
 
-  new_array.each { |x| 
-    if letter_values.include?(x)
-      values << letter_values[x]
-    end
-      }
+    # go through each letter and test if it is in the letter values array
+    
+    new_array.each { |x| 
+      if letter_values.include?(x)
+        values << letter_values[x]
+      end
+        }
 
-  sum_of_name << values.inject(0) { |r, e| r + e } 
+    sum_of_name << values.inject(0) { |r, e| r + e } 
 
-  sum_of_name.each_with_index { |x, index| 
-    total << (x*index)}
+    sum_of_name.each_with_index { |x, index| 
+      total << (x*(index+1))}
 
-  total.inject(0) { |r, e| r + e }
+  end
 
+print total.inject(0) { |r, e| r + e }
 
-
-
-end
-print total
 end
 
 
