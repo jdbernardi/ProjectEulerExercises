@@ -55,19 +55,19 @@ digit_array = number.split('').map! { |x| x.to_i}
 
 array_of_products = []
 
-count = 0
 
-for num in (0..1006)
+
+for num in (0..1005)
 
   product_to_inject = []
 
-  for y in (num..(num+12))
+  for y in (num..(num+13))
 
   product_to_inject << digit_array[y]
 
   end
 
-  count += 1
+
 
   array_of_products << product_to_inject.inject(1) { |r, e| r * e } unless product_to_inject.inject(1) { |r, e| r * e } == 0 
 
@@ -76,8 +76,8 @@ for num in (0..1006)
 end
 
 # this is the largest product 
-puts array_of_products.min
-puts array_of_products.max
+
+print array_of_products.max
 
 
 
