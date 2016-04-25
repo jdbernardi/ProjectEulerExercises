@@ -41,14 +41,14 @@ def name_scores(array)
 array.sort!
  
 split = []
-values = []
+
 sum_of_name = []
 total = []
 
 
   for num in (0...5163)
     new_array = array[num].split('')
-    
+    values = []    
 
     # go through each letter and test if it is in the letter values array
     
@@ -57,6 +57,8 @@ total = []
         values << letter_values[x]
       end
         }
+
+
 
     sum_of_name << values.inject(0) { |r, e| r + e } 
 
