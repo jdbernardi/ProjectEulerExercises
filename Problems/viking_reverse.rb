@@ -1,12 +1,11 @@
 def reverse(arr)
 
 # start with the original array 
-array1 = arr
 array2 = []
-x = (array1.count-1)
+x = (arr.count-1)
 # taking the last element, we push that into a new array
-(array1.count).times do
-  array2 << array1[x]
+(arr.count).times do
+  array2 << arr[x]
   x -= 1
 end
 # then we take the second to last and push into the new array
