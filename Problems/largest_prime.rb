@@ -8,14 +8,38 @@ require 'Prime'
 
 #PROGRAM largest_prime(number)
 def largest_prime(num)
+
+# we take the number subtract 1 and make that the number we check for Prime
 number = num.to_i
-prime_factor = []
+prime_number_check = (number / 30)
+x = 0 
+# if the number is prime 
 
-Prime.each(number) { |prime| prime_factor << prime unless number % prime != 0 }
 
-print prime_factor.max
+
+while x == 0
+if Prime.prime?(prime_number_check) == true
+  #  then we check if it is divisible by the num
+  if number % prime_number_check == 0
+  #  that would make it the first number we print as the solution
+    print prime_number_check
+    x = 1
+  end
+end
+prime_number_check -= 1
+puts prime_number_check
+end
+
+
+#    break after done?
+#  if its not divisible, we need to decrease the number and check for prime again
+
 
 end
+
+
+
+
 
 
 puts "Please enter the number"
