@@ -27,7 +27,7 @@ def triangle
 # that triangle number then has a number of divisors
 # we want to the number of divisors for that triangle number to be 500
 # Until that number is 500, we need to generate the triangle number
-while number_of_divisors.count <= 500
+while number_of_divisors.count <= 200
   number_of_divisors = []
   
   # will increment triangle
@@ -43,8 +43,8 @@ while number_of_divisors.count <= 500
     # AND check the divisors
       # it will loop and check the number of divisors in the array
         # AND reset if not 500
-  number += 1
-  puts number
+  number += 5
+
 end
 
 # we'll get here if the divisors is 500 and print the triangle number
